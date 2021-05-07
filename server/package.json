@@ -1,0 +1,16 @@
+{
+  "name": "socker-server",
+  "version": "1.0.0",
+  "description": "Node.js server for socket.io",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Jothinayagan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^4.0.2"
+  }
+}
