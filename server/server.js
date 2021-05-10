@@ -22,6 +22,8 @@ io.on("connection", (socket) => {
 
         if (error) return callback(error);
 
+        socket.join(user.room);
+
         // Emitting message event to notify the user that he joined the room!
         socket.emit("message", {
             user: "admin",
@@ -34,7 +36,10 @@ io.on("connection", (socket) => {
             text: `${user.name} has joined`,
         });
 
-        socket.join(user.room);
+        io.to(user.room).emit("roomData", {
+            room: user.room,
+            users: getUsersInRoom(user.room),
+        });
 
         callback();
     });
@@ -50,11 +55,15 @@ io.on("connection", (socket) => {
     // Notify user has been left the session/chat
     socket.on("disconnect", async () => {
         const user = await removeUser(socket.id);
-        
+
         if (user) {
             io.to(user.room).emit("message", {
                 user: "admin",
                 text: `${user.name} has left!!!`,
+            });
+            io.to(user.room).emit("roomData", {
+                room: user.room,
+                users: getUsersInRoom(user.room),
             });
         }
     });

@@ -1,9 +1,11 @@
 const users = [];
 
 const addUser = ({ id, name, room }) => {
-    
     name = name.trim().toLowerCase();
     room = room.trim().toLowerCase();
+
+    if (!name || !room)
+        return { erroe: "Username and room name are required!!" };
 
     const existingUser = users.find(
         (user) => user.name === name && user.room === room
@@ -12,7 +14,7 @@ const addUser = ({ id, name, room }) => {
 
     const user = { id, name, room };
     users.push(user);
-    console.log("adduser ==> ", user)
+    console.log("adduser ==> ", user);
     return { user };
 };
 
