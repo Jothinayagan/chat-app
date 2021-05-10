@@ -9,10 +9,45 @@ const server = http.createServer(app);
 const io = socketio(server);
 const cors = require("cors");
 
+const { addUser, removeUser, getUser, getUsersInRoom } = require("./user");
+
 app.use(cors);
 
 io.on("connection", (socket) => {
     console.log("New user has connected!");
+
+    console.log("socket.id ==> ", socket.id);
+
+    // Look for someone to joining event
+    socket.on("join", ({ name, room }, callback) => {
+        const { error, user } = addUser({ id: socket.id, name, room });
+        console.log("join user ", user);
+        if (error) return callback(error);
+
+        // Emitting message event to notify the user that he joined the room!
+        socket.emit("message", {
+            user: "admin",
+            text: `${user.name}, Welcome to the room ${user.room}`,
+        });
+
+        // Emitting message event to broadcast/notify the other users that new user has joined the chat
+        socket.broadcast.to(user.room).emit("message", {
+            user: "admin",
+            text: `${user.name} has joined`,
+        });
+
+        socket.join(user.room);
+
+        callback();
+    });
+
+    socket.on("sendMessage", async (message, callback) => {
+        const user = await getUser(socket.id);
+        console.log("User ==> ", user);
+        io.to(user.room).emit("message", { user: user.name, text: message });
+
+        callback();
+    });
 
     // Notify user has been left the session/chat
     socket.on("disconnect", () => console.log("User had left chat!"));
