@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
-function LoginModal({ modalState }) {
+function LoginModal({ modalState, closeModal }) {
     return (
-        <Modal show={modalState}>
+        <Modal show={modalState} onHide={closeModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Login</Modal.Title>
+                <Modal.Title className='text-center'>Login</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -28,8 +28,8 @@ function LoginModal({ modalState }) {
                     </Form.Group>
                 </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary">Close</Button>
+            <Modal.Footer className='d-flex justify-content-center'>
+                <Button variant="secondary" onClick={closeModal}>Close</Button>
                 <Button variant="success">Login</Button>
             </Modal.Footer>
         </Modal>

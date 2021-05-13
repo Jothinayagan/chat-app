@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form, Navbar } from "react-bootstrap";
+
 import LoginModal from "../Modal/LoginModal";
 
-function NavBar() {
+export default function NavBar() {
     const [loginModal, setLoginModal] = useState(false);
 
     const handleModal = () => setLoginModal(true);
-    // const closeModal = () => setLoginModal(false);
+    const closeModal = () => setLoginModal(false);
+
     return (
         <>
             <Navbar
@@ -24,10 +26,8 @@ function NavBar() {
                 </Form>
             </Navbar>
             {loginModal === true ? (
-                <LoginModal modalState={loginModal} />
+                <LoginModal modalState={loginModal} closeModal={closeModal} />
             ) : null}
         </>
     );
 }
-
-export default NavBar;
