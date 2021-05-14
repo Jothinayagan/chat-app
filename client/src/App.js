@@ -1,18 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Dashboard from "./components/ChatNew/Dashboard";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Chat from "./components/Chat/Chat";
-import Join from "./components/Join/Join";
-import NavBar from "./components/NavBar/NavBar";
+// import Chat from "./components/Chat/Chat";
+// import Join from "./components/Join/Join";
 
 const App = () => {
     return (
         <>
-            <NavBar />
-            <Router>
-                <Route path="/" exact component={Join} />
-                <Route path="/chat" component={Chat} />
-            </Router>
+            <Dashboard />
+            {/* <Router> */}
+            {/* <NavBar /> */}
+            {/* <Route path="/" exact component={Welcome} /> */}
+            {/* <Route path="/" exact component={Join} /> */}
+            {/* <Route path="/chat" component={Chat} /> */}
+            {/* </Router> */}
         </>
     );
 };
