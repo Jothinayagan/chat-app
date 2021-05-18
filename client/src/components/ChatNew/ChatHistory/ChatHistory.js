@@ -1,132 +1,49 @@
-import React from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { ChatList } from "react-chat-elements";
 
 import "./ChatHistory.css";
 
+const defaultChatData = [
+    {
+        avatar: "https://avatars.githubusercontent.com/u/26777048?v=4",
+        alt: "Reactjs",
+        title: "Facebook",
+        subtitle: "What are you doing?",
+        date: new Date(),
+        unread: 1,
+    },
+    {
+        avatar: "https://avatars.githubusercontent.com/u/26777048?v=4",
+        alt: "Reactjs",
+        title: "Facebook",
+        subtitle: "What are you doing?",
+        date: new Date(),
+        unread: 0,
+    },
+    {
+        avatar: "https://avatars.githubusercontent.com/u/26777048?v=4",
+        alt: "Reactjs",
+        title: "Facebook",
+        subtitle: "What are you doing?",
+        date: new Date(),
+        unread: 0,
+    },
+    {
+        avatar: "https://avatars.githubusercontent.com/u/26777048?v=4",
+        alt: "Reactjs",
+        title: "Facebook",
+        subtitle: "What are you doing?",
+        date: new Date(),
+        unread: 0,
+    },
+];
+
 function ChatHistory() {
+    const [chatData, _setChatData] = useState(defaultChatData);
+
     return (
         <>
-            <Container>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Alina
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Bob
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Ashwin
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Rakesh
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Archit
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Shri Har
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Balaji
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Eniyan
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                </Row>
-                <Row>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                </Row>
-            </Container>
-            {/* <div className="overflow-auto">
-                <h2>Chat History</h2>
-                <div class="list-group overflow-auto">
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        First item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Second item
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Third item
-                    </a>
-                </div>
-            </div> */}
+            <ChatList className="chat-list" dataSource={chatData} />
         </>
     );
 }

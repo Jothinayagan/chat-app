@@ -1,0 +1,6 @@
+.chat_history {
+    background-color: white;
+    overflow: scroll;
+    /* -ms-overflow-style: none; */
+    /* scrollbar-width: none; */
+}

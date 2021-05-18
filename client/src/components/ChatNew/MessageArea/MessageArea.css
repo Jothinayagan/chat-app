@@ -5,8 +5,8 @@
     background-position: center;
     padding: 30px;
     overflow: scroll;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    /* -ms-overflow-style: none; IE and Edge */
+    /* scrollbar-width: none; Firefox */
 }
 
 .chat_body::-webkit-scrollbar {
@@ -33,4 +33,10 @@
     top: -15px;
     font-weight: 700;
     font-size: x-small;
+}
+
+.message-list {
+    flex: 1;
+    min-width: 725px;
+    overflow: auto;
 }

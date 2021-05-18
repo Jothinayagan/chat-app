@@ -5,7 +5,7 @@ function InputArea() {
     return (
         <InputGroup className="mb-3">
             <FormControl
-                placeholder="Please type your message here..."
+                placeholder="Type your message here..."
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
             />

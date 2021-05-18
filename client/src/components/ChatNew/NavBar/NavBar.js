@@ -17,7 +17,7 @@ export default function NavBar() {
                 className="justify-content-between"
                 varient="dark">
                 <Navbar.Brand>
-                    <strong>Starboy</strong>
+                    <strong>Chat Application</strong>
                 </Navbar.Brand>
                 <Form>
                     <Button variant="success" onClick={handleModal}>
@@ -25,7 +25,7 @@ export default function NavBar() {
                     </Button>
                 </Form>
             </Navbar>
-            {loginModal === true ? (
+            {loginModal ? (
                 <LoginModal modalState={loginModal} closeModal={closeModal} />
             ) : null}
         </>

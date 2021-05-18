@@ -5,7 +5,7 @@ const addUser = ({ id, name, room }) => {
     room = room.trim().toLowerCase();
 
     if (!name || !room)
-        return { erroe: "Username and room name are required!!" };
+        return { error: "Username and room name are required!!" };
 
     const existingUser = users.find(
         (user) => user.name === name && user.room === room
