@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import ChatHistory from "../ChatHistory/ChatHistory";
-import InputArea from "../InputArea";
+import InputArea from "../InputArea/InputArea";
 import SideBanner from "../SideBanner/SideBanner";
 import MainBanner from "../MainBanner/MainBanner";
 import MessageArea from "../MessageArea/MessageArea";
@@ -51,15 +51,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-// {<div className="container">
-// <div class="row-md-12">
-//     <div className="col-8">
-//         Chat heads
-//     </div>
-//     <div className="col-4">
-//         Message Area
-//         <InputArea />
-//     </div>
-// </div>
-// </div>}
