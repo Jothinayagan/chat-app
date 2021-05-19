@@ -11,10 +11,11 @@ import Welcome from "./components/ChatNew/welcome/Welcome";
 const App = () => {
     return (
         <>
-            <NavBar />
             <Router>
+                <NavBar />
                 <Route path="/" exact component={Welcome} />
                 <Route path="/loginSuccess" component={Dashboard} />
+
                 {/* <Route path="/" exact component={Join} /> */}
                 {/* <Route path="/chat" component={Chat} /> */}
             </Router>
