@@ -4,13 +4,15 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import Alert from "../Alert/AlertMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../../redux/actions";
 
 const initialState = {
     username: "",
     password: "",
 };
 
-function LoginModal({ modalState, closeModal }) {
+function LoginModal() {
     const history = useHistory();
     const [_isLoginSuccess, setLoginSuccess] = useState(false);
     const [loginCredentials, setLoginCredentials] = useState(initialState);
@@ -19,6 +21,12 @@ function LoginModal({ modalState, closeModal }) {
         variant: "",
         message: "",
     });
+
+    // Get modal state from redux store
+    const loginModalState = useSelector((state) => state.toggleLoginModal);
+    const loginDispatch = useDispatch();
+
+    const handleModal = () => loginDispatch(closeModal());
 
     const handleInput = (e) =>
         setLoginCredentials({
@@ -33,6 +41,7 @@ function LoginModal({ modalState, closeModal }) {
             .then((res) => {
                 setAlert({ ...showAlert, status: false });
                 setLoginSuccess(true);
+                handleModal();
                 history.push("/loginSuccess");
             })
             .catch((error) => {
@@ -45,7 +54,7 @@ function LoginModal({ modalState, closeModal }) {
     };
 
     return (
-        <Modal show={modalState} onHide={closeModal}>
+        <Modal show={loginModalState} onHide={handleModal}>
             <Modal.Header closeButton>
                 <Modal.Title className="text-center">Login</Modal.Title>
             </Modal.Header>
@@ -67,6 +76,7 @@ function LoginModal({ modalState, closeModal }) {
                             type="password"
                             name="password"
                             placeholder="Please enter password"
+                            autoComplete='false'
                             onChange={handleInput}
                         />
                     </Form.Group>
@@ -79,7 +89,7 @@ function LoginModal({ modalState, closeModal }) {
                 <Button
                     className="d-flex justify-content-end"
                     variant="secondary"
-                    onClick={closeModal}>
+                    onClick={handleModal}>
                     Close
                 </Button>
 

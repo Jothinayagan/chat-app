@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Navbar } from "react-bootstrap";
 
+import { openModal } from "../../../redux/actions";
 import LoginModal from "../Modal/LoginModal";
 
 export default function NavBar() {
-    const [loginModal, setLoginModal] = useState(false);
+    const loginModal = useSelector((state) => state.toggleLoginModal);
+    console.log("Loginmodal", loginModal);
+    const dispatchModalAction = useDispatch();
 
-    const handleModal = () => setLoginModal(true);
-    const closeModal = () => setLoginModal(false);
+    const handleModal = () => dispatchModalAction(openModal());
 
     return (
         <>
@@ -25,9 +28,7 @@ export default function NavBar() {
                     </Button>
                 </Form>
             </Navbar>
-            {loginModal ? (
-                <LoginModal modalState={loginModal} closeModal={closeModal} />
-            ) : null}
+            {loginModal ? <LoginModal /> : null}
         </>
     );
 }
