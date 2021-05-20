@@ -14,7 +14,6 @@ const initialState = {
 
 function LoginModal() {
     const history = useHistory();
-    const [_isLoginSuccess, setLoginSuccess] = useState(false);
     const [loginCredentials, setLoginCredentials] = useState(initialState);
     const [showAlert, setAlert] = useState({
         state: false,
@@ -40,7 +39,6 @@ function LoginModal() {
             .post("http://localhost:4000/api/authUser", loginCredentials)
             .then((res) => {
                 setAlert({ ...showAlert, status: false });
-                setLoginSuccess(true);
                 handleModal();
                 history.push("/loginSuccess");
             })

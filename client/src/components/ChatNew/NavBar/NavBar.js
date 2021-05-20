@@ -7,7 +7,6 @@ import LoginModal from "../Modal/LoginModal";
 
 export default function NavBar() {
     const loginModal = useSelector((state) => state.toggleLoginModal);
-    console.log("Loginmodal", loginModal);
     const dispatchModalAction = useDispatch();
 
     const handleModal = () => dispatchModalAction(openModal());
