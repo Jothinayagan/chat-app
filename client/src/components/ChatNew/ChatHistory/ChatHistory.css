@@ -1,0 +1,17 @@
+.sidebar_chats {
+    flex: 1;
+    background-color: white;
+    overflow: scroll;
+    /* -ms-overflow-style: none; IE and Edge */
+    /* scrollbar-width: none; Firefox */
+}
+
+.sidebar_chats::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-list {
+    min-width: 330px;
+    max-width: 380px;
+    overflow: auto;
+}

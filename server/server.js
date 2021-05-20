@@ -10,9 +10,19 @@ const io = socketio(server);
 const cors = require("cors");
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./user");
+const router = require("./router");
 
-app.use(cors);
+// Allowing specific domain to access the resource
+var corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200, // For legacy browser support
+};
 
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use("/api", router);
+
+// Socket Configurations
 io.on("connection", (socket) => {
     console.log("New user has connected!");
 
