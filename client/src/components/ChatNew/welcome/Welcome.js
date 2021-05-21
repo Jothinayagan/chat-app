@@ -1,13 +1,16 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import Signup from "../Signup/Signup";
 
 function Welcome() {
     return (
-        <div className="container d-flex align-item-center justify-content-center">
-            <h2>
-                I'm not good at chatting right away. Women have to be very
-                patient with me, I suppose.
-            </h2>
-        </div>
+        <Container
+            className="d-flex align-item-center justify-content-center mt-4"
+            style={{ minHeight: "70vh" }}>
+            <div className="w-100" style={{ maxWidth: "400px" }}>
+                <Signup />
+            </div>
+        </Container>
     );
 }
 
